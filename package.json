@@ -17,7 +17,20 @@
   },
   "homepage": "https://github.com/nicco88/indecision-app#readme",
   "dependencies": {
+    "normalize.css": "^7.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "auto-reload-brunch": "^2.7.1",
+    "babel-brunch": "^6.1.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "brunch": "^2.10.12",
+    "clean-css-brunch": "^2.10.0",
+    "postcss-brunch": "^2.1.0",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-import": "^11.0.0",
+    "uglify-js-brunch": "^2.10.0"
   }
 }
