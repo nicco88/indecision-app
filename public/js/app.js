@@ -199,6 +199,10 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     };
 
+    Header.defaultProps = {
+        title: 'Nicco\'s Indecision App'
+    };
+
     var Action = function Action() {
         return _react2.default.createElement(
             'div',
@@ -209,10 +213,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 'What should I do?'
             )
         );
-    };
-
-    Header.defaultProps = {
-        title: 'Nicco\'s Indecision App'
     };
 
     var IndecisionApp = function (_React$Component) {

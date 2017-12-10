@@ -16,15 +16,15 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     );
 
+    Header.defaultProps = {
+        title: 'Nicco\'s Indecision App'
+    };
+
     const Action = () => (
         <div>
             <button>What should I do?</button>
         </div>
     );
-
-    Header.defaultProps = {
-        title: 'Nicco\'s Indecision App'
-    };
 
     class IndecisionApp extends React.Component {
         
