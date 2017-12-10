@@ -199,6 +199,18 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     };
 
+    var Action = function Action() {
+        return _react2.default.createElement(
+            'div',
+            null,
+            _react2.default.createElement(
+                'button',
+                null,
+                'What should I do?'
+            )
+        );
+    };
+
     Header.defaultProps = {
         title: 'Nicco\'s Indecision App'
     };
@@ -220,7 +232,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return _react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement(Header, { subtitle: subtitle })
+                    _react2.default.createElement(Header, { subtitle: subtitle }),
+                    _react2.default.createElement(Action, null)
                 );
             }
         }]);

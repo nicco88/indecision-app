@@ -16,6 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     );
 
+    const Action = () => (
+        <div>
+            <button>What should I do?</button>
+        </div>
+    );
+
     Header.defaultProps = {
         title: 'Nicco\'s Indecision App'
     };
@@ -28,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return (
                 <div>
                     <Header subtitle={ subtitle } />
+                    <Action />
                 </div>
             );
         }
