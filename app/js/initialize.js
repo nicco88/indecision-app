@@ -7,16 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('app initialized!!!!!!');
 
 
-    const Header = (props) => {
-        return (
+    const Header = (props) => (
+        <div>
             <div>
-                <div>
-                    <h1>{ props.title }</h1>
-                    { props.subtitle && <h2>{ props.subtitle }</h2> }
-                </div>
+                <h1>{ props.title }</h1>
+                { props.subtitle && <h2>{ props.subtitle }</h2> }
             </div>
-        );
-    };
+        </div>
+    );
 
     Header.defaultProps = {
         title: 'Nicco\'s Indecision App'
