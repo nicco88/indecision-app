@@ -26,6 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     );
 
+    class Options extends React.Component {
+        render() {
+            return (
+                <div>
+                    Options component here
+                </div>
+            );
+        }
+    }
+
     class IndecisionApp extends React.Component {
         
         render () {
@@ -35,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <Header subtitle={ subtitle } />
                     <Action />
+                    <Options />
                 </div>
             );
         }
