@@ -34,7 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             );
         }
-    }
+    };
+
+    class AddOption extends React.Component {
+        render() {
+            return (
+                <div>AddOption component</div>
+            );
+        }
+    };
 
     class IndecisionApp extends React.Component {
         
@@ -46,10 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <Header subtitle={ subtitle } />
                     <Action />
                     <Options />
+                    <AddOption /> 
                 </div>
             );
         }
-    }
+    };
 
 
     ReactDOM.render(<IndecisionApp />, document.getElementById('app'));

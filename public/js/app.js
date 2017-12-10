@@ -238,8 +238,35 @@ document.addEventListener('DOMContentLoaded', function () {
         return Options;
     }(_react2.default.Component);
 
-    var IndecisionApp = function (_React$Component2) {
-        _inherits(IndecisionApp, _React$Component2);
+    ;
+
+    var AddOption = function (_React$Component2) {
+        _inherits(AddOption, _React$Component2);
+
+        function AddOption() {
+            _classCallCheck(this, AddOption);
+
+            return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+        }
+
+        _createClass(AddOption, [{
+            key: 'render',
+            value: function render() {
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    'AddOption component'
+                );
+            }
+        }]);
+
+        return AddOption;
+    }(_react2.default.Component);
+
+    ;
+
+    var IndecisionApp = function (_React$Component3) {
+        _inherits(IndecisionApp, _React$Component3);
 
         function IndecisionApp() {
             _classCallCheck(this, IndecisionApp);
@@ -257,13 +284,16 @@ document.addEventListener('DOMContentLoaded', function () {
                     null,
                     _react2.default.createElement(Header, { subtitle: subtitle }),
                     _react2.default.createElement(Action, null),
-                    _react2.default.createElement(Options, null)
+                    _react2.default.createElement(Options, null),
+                    _react2.default.createElement(AddOption, null)
                 );
             }
         }]);
 
         return IndecisionApp;
     }(_react2.default.Component);
+
+    ;
 
     _reactDom2.default.render(_react2.default.createElement(IndecisionApp, null), document.getElementById('app'));
 });
