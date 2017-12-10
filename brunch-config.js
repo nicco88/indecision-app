@@ -13,7 +13,10 @@ exports.files = {
 };
 
 exports.plugins = {
-    babel: {presets: ['env', 'react']},
+    babel: {
+        presets: ['env', 'react'],
+        plugins: ['transform-class-properties']
+    },
     postcss: {
         processors: [
             require('postcss-import')(),
