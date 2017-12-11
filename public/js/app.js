@@ -191,13 +191,14 @@ document.addEventListener('DOMContentLoaded', function () {
             key: 'render',
             value: function render() {
                 var subtitle = 'The world is big';
+                var options = ['opt1', 'opt2'];
 
                 return _react2.default.createElement(
                     'div',
                     null,
                     _react2.default.createElement(Header, { subtitle: subtitle }),
                     _react2.default.createElement(Action, null),
-                    _react2.default.createElement(Options, null),
+                    _react2.default.createElement(Options, { options: options }),
                     _react2.default.createElement(AddOption, null)
                 );
             }
@@ -256,12 +257,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         _createClass(Options, [{
             key: 'render',
-            value: function render() {
+            value: function render(props) {
                 return _react2.default.createElement(
                     'div',
                     null,
-                    'Options component here:',
-                    _react2.default.createElement(Option, null)
+                    this.props.options.map(function (option, i) {
+                        return _react2.default.createElement(Option, { key: i, optionText: option });
+                    })
                 );
             }
         }]);
@@ -272,11 +274,11 @@ document.addEventListener('DOMContentLoaded', function () {
     ;
 
     // option
-    var Option = function Option() {
+    var Option = function Option(props) {
         return _react2.default.createElement(
             'div',
             null,
-            'Option component'
+            props.optionText
         );
     };
 

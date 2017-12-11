@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         render () {
             const subtitle = 'The world is big';
+            const options = ['opt1', 'opt2'];
 
             return (
                 <div>
                     <Header subtitle={ subtitle } />
                     <Action />
-                    <Options />
+                    <Options options={options} />
                     <AddOption /> 
                 </div>
             );
@@ -42,20 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class Options extends React.Component {
-        render() {
+        render(props) {
             return (
                 <div>
-                    Options component here:
-                    <Option />
+                    { 
+                        this.props.options.map((option, i) => <Option key={i} optionText={ option } />)
+                    }
                 </div>
             );
         }
     };
 
     // option
-    const Option = () => (
+    const Option = (props) => (
         <div>
-            Option component
+            { props.optionText }
         </div>
     );
 
