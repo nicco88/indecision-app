@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('app initialized!!!!!!');
 
     class IndecisionApp extends React.Component {
+
+        handlePick = () => {
+            alert('handlepick');
+        };
         
         render () {
             const subtitle = 'The world is big';
@@ -15,7 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return (
                 <div>
                     <Header subtitle={ subtitle } />
-                    <Action />
+                    <Action 
+                        handlePick={this.handlePick}
+                    />
                     <Options options={options} />
                     <AddOption /> 
                 </div>
@@ -36,9 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
         title: 'Nicco\'s Indecision App'
     };
 
-    const Action = () => (
+    const Action = (props) => (
         <div>
-            <button>What should I do?</button>
+            <button onClick={props.handlePick}>What should I do?</button>
         </div>
     );
 

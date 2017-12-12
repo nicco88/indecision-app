@@ -182,9 +182,19 @@ document.addEventListener('DOMContentLoaded', function () {
         _inherits(IndecisionApp, _React$Component);
 
         function IndecisionApp() {
+            var _ref;
+
+            var _temp, _this, _ret;
+
             _classCallCheck(this, IndecisionApp);
 
-            return _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).apply(this, arguments));
+            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+            }
+
+            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call.apply(_ref, [this].concat(args))), _this), _this.handlePick = function () {
+                alert('handlepick');
+            }, _temp), _possibleConstructorReturn(_this, _ret);
         }
 
         _createClass(IndecisionApp, [{
@@ -197,7 +207,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     'div',
                     null,
                     _react2.default.createElement(Header, { subtitle: subtitle }),
-                    _react2.default.createElement(Action, null),
+                    _react2.default.createElement(Action, {
+                        handlePick: this.handlePick
+                    }),
                     _react2.default.createElement(Options, { options: options }),
                     _react2.default.createElement(AddOption, null)
                 );
@@ -234,13 +246,13 @@ document.addEventListener('DOMContentLoaded', function () {
         title: 'Nicco\'s Indecision App'
     };
 
-    var Action = function Action() {
+    var Action = function Action(props) {
         return _react2.default.createElement(
             'div',
             null,
             _react2.default.createElement(
                 'button',
-                null,
+                { onClick: props.handlePick },
                 'What should I do?'
             )
         );
