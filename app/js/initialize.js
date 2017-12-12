@@ -49,12 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class Options extends React.Component {
-        render(props) {
+        handleRemoveAll = () => {
+            alert('handleRemoveAll');
+        };
+
+        render() {
             return (
                 <div>
                     { 
                         this.props.options.map((option, i) => <Option key={i} optionText={ option } />)
                     }
+                    <button onClick={this.handleRemoveAll}>Remove All</button>
                 </div>
             );
         }

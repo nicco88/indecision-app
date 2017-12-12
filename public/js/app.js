@@ -262,20 +262,35 @@ document.addEventListener('DOMContentLoaded', function () {
         _inherits(Options, _React$Component2);
 
         function Options() {
+            var _ref2;
+
+            var _temp2, _this2, _ret2;
+
             _classCallCheck(this, Options);
 
-            return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+            for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+                args[_key2] = arguments[_key2];
+            }
+
+            return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Options.__proto__ || Object.getPrototypeOf(Options)).call.apply(_ref2, [this].concat(args))), _this2), _this2.handleRemoveAll = function () {
+                alert('handleRemoveAll');
+            }, _temp2), _possibleConstructorReturn(_this2, _ret2);
         }
 
         _createClass(Options, [{
             key: 'render',
-            value: function render(props) {
+            value: function render() {
                 return _react2.default.createElement(
                     'div',
                     null,
                     this.props.options.map(function (option, i) {
                         return _react2.default.createElement(Option, { key: i, optionText: option });
-                    })
+                    }),
+                    _react2.default.createElement(
+                        'button',
+                        { onClick: this.handleRemoveAll },
+                        'Remove All'
+                    )
                 );
             }
         }]);
