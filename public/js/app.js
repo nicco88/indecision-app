@@ -178,6 +178,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('app initialized!!!!!!');
 
+    /*****************************
+     * App starts here!!!
+     *****************************/
+
     var IndecisionApp = function (_React$Component) {
         _inherits(IndecisionApp, _React$Component);
 
@@ -261,16 +265,19 @@ document.addEventListener('DOMContentLoaded', function () {
     var Options = function (_React$Component2) {
         _inherits(Options, _React$Component2);
 
-        function Options() {
+        function Options(props) {
             _classCallCheck(this, Options);
 
-            return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+            var _this2 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+            _this2.handleRemoveAll = _this2.handleRemoveAll.bind(_this2);
+            return _this2;
         }
 
         _createClass(Options, [{
             key: 'handleRemoveAll',
             value: function handleRemoveAll() {
-                alert('handleRemoveAll');
+                console.log(this.props.options);
             }
         }, {
             key: 'render',

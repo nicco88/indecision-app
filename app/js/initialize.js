@@ -6,6 +6,10 @@ import ReactDOM from 'react-dom';
 document.addEventListener('DOMContentLoaded', () => {
     console.log('app initialized!!!!!!');
 
+   /*****************************
+    * App starts here!!!
+    *****************************/
+
     class IndecisionApp extends React.Component {
 
         handlePick = () => {
@@ -49,8 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class Options extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleRemoveAll = this.handleRemoveAll.bind(this);
+        };
+
         handleRemoveAll() {
-            alert('handleRemoveAll');
+            console.log(this.props.options);
         };
 
         render() {
