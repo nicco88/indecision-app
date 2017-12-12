@@ -262,22 +262,17 @@ document.addEventListener('DOMContentLoaded', function () {
         _inherits(Options, _React$Component2);
 
         function Options() {
-            var _ref2;
-
-            var _temp2, _this2, _ret2;
-
             _classCallCheck(this, Options);
 
-            for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-                args[_key2] = arguments[_key2];
-            }
-
-            return _ret2 = (_temp2 = (_this2 = _possibleConstructorReturn(this, (_ref2 = Options.__proto__ || Object.getPrototypeOf(Options)).call.apply(_ref2, [this].concat(args))), _this2), _this2.handleRemoveAll = function () {
-                alert('handleRemoveAll');
-            }, _temp2), _possibleConstructorReturn(_this2, _ret2);
+            return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
         }
 
         _createClass(Options, [{
+            key: 'handleRemoveAll',
+            value: function handleRemoveAll() {
+                alert('handleRemoveAll');
+            }
+        }, {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
@@ -319,12 +314,29 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         _createClass(AddOption, [{
+            key: 'handleAddOption',
+            value: function handleAddOption(e) {
+                if (e) e.preventDefault();
+                var option = e.target.elements.option.value.trim();
+                if (option) alert(option);
+                e.target.elements.option.value = '';
+            }
+        }, {
             key: 'render',
             value: function render() {
                 return _react2.default.createElement(
                     'div',
                     null,
-                    'AddOption component'
+                    _react2.default.createElement(
+                        'form',
+                        { onSubmit: this.handleAddOption },
+                        _react2.default.createElement('input', { name: 'option', type: 'text' }),
+                        _react2.default.createElement(
+                            'button',
+                            null,
+                            'Add'
+                        )
+                    )
                 );
             }
         }]);

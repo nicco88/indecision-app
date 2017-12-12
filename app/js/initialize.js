@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class Options extends React.Component {
-        handleRemoveAll = () => {
+        handleRemoveAll() {
             alert('handleRemoveAll');
         };
 
@@ -73,9 +73,21 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class AddOption extends React.Component {
+        handleAddOption(e) {
+            if(e) e.preventDefault();
+            const option = e.target.elements.option.value.trim();
+            if(option) alert(option);
+            e.target.elements.option.value = '';
+        }
+
         render() {
             return (
-                <div>AddOption component</div>
+                <div>
+                    <form onSubmit={this.handleAddOption}>
+                        <input name="option" type="text"/>
+                        <button>Add</button>
+                    </form>
+                </div>
             );
         }
     };
