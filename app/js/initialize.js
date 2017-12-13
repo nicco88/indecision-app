@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor(props) {
             super(props);
 
+            this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
             this.state = {
                 options: ['opt1', 'opt2']
             }
@@ -23,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
         handlePick = () => {
             alert('handlepick');
         };
+        
+        handleDeleteOptions() {
+            this.setState(() => {
+                return {
+                    options: []
+                }
+            });
+        }
         
         render () {
             const subtitle = 'The world is big';
@@ -34,7 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         handlePick={this.handlePick}
                         hasOptions={this.state.options.length > 0}
                     />
-                    <Options options={this.state.options} />
+                    <Options 
+                        options={this.state.options}
+                        handleDeleteOptions={this.handleDeleteOptions}
+                    />
                     <AddOption /> 
                 </div>
             );
@@ -81,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     { 
                         this.props.options.map((option, i) => <Option key={i} optionText={ option } />)
                     }
-                    <button onClick={this.handleRemoveAll}>Remove All</button>
+                    <button onClick={this.props.handleDeleteOptions}>Remove All</button>
                 </div>
             );
         }

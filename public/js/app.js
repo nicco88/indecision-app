@@ -194,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('handlepick');
             };
 
+            _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
             _this.state = {
                 options: ['opt1', 'opt2']
             };
@@ -201,6 +202,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         _createClass(IndecisionApp, [{
+            key: 'handleDeleteOptions',
+            value: function handleDeleteOptions() {
+                this.setState(function () {
+                    return {
+                        options: []
+                    };
+                });
+            }
+        }, {
             key: 'render',
             value: function render() {
                 var subtitle = 'The world is big';
@@ -213,7 +223,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         handlePick: this.handlePick,
                         hasOptions: this.state.options.length > 0
                     }),
-                    _react2.default.createElement(Options, { options: this.state.options }),
+                    _react2.default.createElement(Options, {
+                        options: this.state.options,
+                        handleDeleteOptions: this.handleDeleteOptions
+                    }),
                     _react2.default.createElement(AddOption, null)
                 );
             }
@@ -292,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     }),
                     _react2.default.createElement(
                         'button',
-                        { onClick: this.handleRemoveAll },
+                        { onClick: this.props.handleDeleteOptions },
                         'Remove All'
                     )
                 );
