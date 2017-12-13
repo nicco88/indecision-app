@@ -17,8 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
             this.handlePick = this.handlePick.bind(this);
+            this.handleAddOption = this.handleAddOption.bind(this);
             this.state = {
-                options: ['opt1', 'opt2']
+                options: []
             }
         }
 
@@ -32,6 +33,20 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setState(() => {
                 return {
                     options: []
+                }
+            });
+        };
+
+        handleAddOption(option) {
+            if(!option) {
+                return 'Enter valid value to add item';
+            } else if (this.state.options.indexOf(option) > -1) {
+                return 'This option already exists'
+            }
+
+            this.setState((prevState) => {
+                return {
+                    options: prevState.options.concat(option)
                 }
             });
         }
@@ -50,7 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         options={this.state.options}
                         handleDeleteOptions={this.handleDeleteOptions}
                     />
-                    <AddOption /> 
+                    <AddOption 
+                        handleAddOption={this.handleAddOption}
+                    /> 
                 </div>
             );
         }
@@ -110,16 +127,35 @@ document.addEventListener('DOMContentLoaded', () => {
     );
 
     class AddOption extends React.Component {
+        // since we are using 'this', we need to build the constructor
+        constructor(props) {
+            super(props);
+            this.handleAddOption = this.handleAddOption.bind(this);
+            this.state = {
+                error: undefined
+            };
+        }
+
         handleAddOption(e) {
             if(e) e.preventDefault();
+
             const option = e.target.elements.option.value.trim();
-            if(option) alert(option);
+            const error = this.props.handleAddOption(option);
+            
+            this.setState(() => {
+                return {
+                    error
+                    //error: error
+                }
+            });
+
             e.target.elements.option.value = '';
         }
 
         render() {
             return (
                 <div>
+                    {this.state.error && <p>{this.state.error}</p> }
                     <form onSubmit={this.handleAddOption}>
                         <input name="option" type="text"/>
                         <button>Add</button>

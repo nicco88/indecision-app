@@ -192,8 +192,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
             _this.handlePick = _this.handlePick.bind(_this);
+            _this.handleAddOption = _this.handleAddOption.bind(_this);
             _this.state = {
-                options: ['opt1', 'opt2']
+                options: []
             };
             return _this;
         }
@@ -215,6 +216,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
         }, {
+            key: 'handleAddOption',
+            value: function handleAddOption(option) {
+                if (!option) {
+                    return 'Enter valid value to add item';
+                } else if (this.state.options.indexOf(option) > -1) {
+                    return 'This option already exists';
+                }
+
+                this.setState(function (prevState) {
+                    return {
+                        options: prevState.options.concat(option)
+                    };
+                });
+            }
+        }, {
             key: 'render',
             value: function render() {
                 var subtitle = 'The world is big';
@@ -231,7 +247,9 @@ document.addEventListener('DOMContentLoaded', function () {
                         options: this.state.options,
                         handleDeleteOptions: this.handleDeleteOptions
                     }),
-                    _react2.default.createElement(AddOption, null)
+                    _react2.default.createElement(AddOption, {
+                        handleAddOption: this.handleAddOption
+                    })
                 );
             }
         }]);
@@ -333,18 +351,34 @@ document.addEventListener('DOMContentLoaded', function () {
     var AddOption = function (_React$Component3) {
         _inherits(AddOption, _React$Component3);
 
-        function AddOption() {
+        // since we are using 'this', we need to build the constructor
+        function AddOption(props) {
             _classCallCheck(this, AddOption);
 
-            return _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).apply(this, arguments));
+            var _this3 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+
+            _this3.handleAddOption = _this3.handleAddOption.bind(_this3);
+            _this3.state = {
+                error: undefined
+            };
+            return _this3;
         }
 
         _createClass(AddOption, [{
             key: 'handleAddOption',
             value: function handleAddOption(e) {
                 if (e) e.preventDefault();
+
                 var option = e.target.elements.option.value.trim();
-                if (option) alert(option);
+                var error = this.props.handleAddOption(option);
+
+                this.setState(function () {
+                    return {
+                        error: error
+                        //error: error
+                    };
+                });
+
                 e.target.elements.option.value = '';
             }
         }, {
@@ -353,6 +387,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 return _react2.default.createElement(
                     'div',
                     null,
+                    this.state.error && _react2.default.createElement(
+                        'p',
+                        null,
+                        this.state.error
+                    ),
                     _react2.default.createElement(
                         'form',
                         { onSubmit: this.handleAddOption },
