@@ -16,13 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
             super(props);
 
             this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
+            this.handlePick = this.handlePick.bind(this);
             this.state = {
                 options: ['opt1', 'opt2']
             }
         }
 
-        handlePick = () => {
-            alert('handlepick');
+        handlePick() {
+            const randomIndex = Math.floor(Math.random() * this.state.options.length);
+            const option = this.state.options[randomIndex];
+            alert(option);
         };
         
         handleDeleteOptions() {

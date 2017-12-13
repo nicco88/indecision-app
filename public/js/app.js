@@ -190,11 +190,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
             var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
-            _this.handlePick = function () {
-                alert('handlepick');
-            };
-
             _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
+            _this.handlePick = _this.handlePick.bind(_this);
             _this.state = {
                 options: ['opt1', 'opt2']
             };
@@ -202,6 +199,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         _createClass(IndecisionApp, [{
+            key: 'handlePick',
+            value: function handlePick() {
+                var randomIndex = Math.floor(Math.random() * this.state.options.length);
+                var option = this.state.options[randomIndex];
+                alert(option);
+            }
+        }, {
             key: 'handleDeleteOptions',
             value: function handleDeleteOptions() {
                 this.setState(function () {
