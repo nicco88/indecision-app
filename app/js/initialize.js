@@ -12,13 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class IndecisionApp extends React.Component {
 
+        constructor(props) {
+            super(props);
+
+            this.state = {
+                options: ['opt1', 'opt2']
+            }
+        }
+
         handlePick = () => {
             alert('handlepick');
         };
         
         render () {
             const subtitle = 'The world is big';
-            const options = ['opt1', 'opt2'];
+            // const options = ['opt1', 'opt2'];
 
             return (
                 <div>
@@ -26,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <Action 
                         handlePick={this.handlePick}
                     />
-                    <Options options={options} />
+                    <Options options={this.state.options} />
                     <AddOption /> 
                 </div>
             );

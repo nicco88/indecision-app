@@ -185,27 +185,26 @@ document.addEventListener('DOMContentLoaded', function () {
     var IndecisionApp = function (_React$Component) {
         _inherits(IndecisionApp, _React$Component);
 
-        function IndecisionApp() {
-            var _ref;
-
-            var _temp, _this, _ret;
-
+        function IndecisionApp(props) {
             _classCallCheck(this, IndecisionApp);
 
-            for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-                args[_key] = arguments[_key];
-            }
+            var _this = _possibleConstructorReturn(this, (IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call(this, props));
 
-            return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call.apply(_ref, [this].concat(args))), _this), _this.handlePick = function () {
+            _this.handlePick = function () {
                 alert('handlepick');
-            }, _temp), _possibleConstructorReturn(_this, _ret);
+            };
+
+            _this.state = {
+                options: ['opt1', 'opt2']
+            };
+            return _this;
         }
 
         _createClass(IndecisionApp, [{
             key: 'render',
             value: function render() {
                 var subtitle = 'The world is big';
-                var options = ['opt1', 'opt2'];
+                // const options = ['opt1', 'opt2'];
 
                 return _react2.default.createElement(
                     'div',
@@ -214,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     _react2.default.createElement(Action, {
                         handlePick: this.handlePick
                     }),
-                    _react2.default.createElement(Options, { options: options }),
+                    _react2.default.createElement(Options, { options: this.state.options }),
                     _react2.default.createElement(AddOption, null)
                 );
             }
