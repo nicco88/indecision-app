@@ -204,14 +204,14 @@ document.addEventListener('DOMContentLoaded', function () {
             key: 'render',
             value: function render() {
                 var subtitle = 'The world is big';
-                // const options = ['opt1', 'opt2'];
 
                 return _react2.default.createElement(
                     'div',
                     null,
                     _react2.default.createElement(Header, { subtitle: subtitle }),
                     _react2.default.createElement(Action, {
-                        handlePick: this.handlePick
+                        handlePick: this.handlePick,
+                        hasOptions: this.state.options.length > 0
                     }),
                     _react2.default.createElement(Options, { options: this.state.options }),
                     _react2.default.createElement(AddOption, null)
@@ -255,7 +255,10 @@ document.addEventListener('DOMContentLoaded', function () {
             null,
             _react2.default.createElement(
                 'button',
-                { onClick: props.handlePick },
+                {
+                    onClick: props.handlePick,
+                    disabled: !props.hasOptions
+                },
                 'What should I do?'
             )
         );

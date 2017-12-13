@@ -26,13 +26,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         render () {
             const subtitle = 'The world is big';
-            // const options = ['opt1', 'opt2'];
 
             return (
                 <div>
                     <Header subtitle={ subtitle } />
                     <Action 
                         handlePick={this.handlePick}
+                        hasOptions={this.state.options.length > 0}
                     />
                     <Options options={this.state.options} />
                     <AddOption /> 
@@ -56,7 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const Action = (props) => (
         <div>
-            <button onClick={props.handlePick}>What should I do?</button>
+            <button 
+                onClick={props.handlePick}
+                disabled={!props.hasOptions}
+            >
+                What should I do?
+            </button>
         </div>
     );
 
