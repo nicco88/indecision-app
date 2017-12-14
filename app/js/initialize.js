@@ -97,27 +97,14 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     );
 
-    class Options extends React.Component {
-        constructor(props) {
-            super(props);
-            this.handleRemoveAll = this.handleRemoveAll.bind(this);
-        };
-
-        handleRemoveAll() {
-            console.log(this.props.options);
-        };
-
-        render() {
-            return (
-                <div>
-                    { 
-                        this.props.options.map((option, i) => <Option key={i} optionText={ option } />)
-                    }
-                    <button onClick={this.props.handleDeleteOptions}>Remove All</button>
-                </div>
-            );
-        }
-    };
+    const Options = (props) => (
+        <div>
+            { 
+                props.options.map((option, i) => <Option key={i} optionText={ option } />)
+            }
+            <button onClick={props.handleDeleteOptions}>Remove All</button>
+        </div>
+    );
 
     // option
     const Option = (props) => (

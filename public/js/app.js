@@ -299,45 +299,20 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     };
 
-    var Options = function (_React$Component2) {
-        _inherits(Options, _React$Component2);
-
-        function Options(props) {
-            _classCallCheck(this, Options);
-
-            var _this2 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
-
-            _this2.handleRemoveAll = _this2.handleRemoveAll.bind(_this2);
-            return _this2;
-        }
-
-        _createClass(Options, [{
-            key: 'handleRemoveAll',
-            value: function handleRemoveAll() {
-                console.log(this.props.options);
-            }
-        }, {
-            key: 'render',
-            value: function render() {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    this.props.options.map(function (option, i) {
-                        return _react2.default.createElement(Option, { key: i, optionText: option });
-                    }),
-                    _react2.default.createElement(
-                        'button',
-                        { onClick: this.props.handleDeleteOptions },
-                        'Remove All'
-                    )
-                );
-            }
-        }]);
-
-        return Options;
-    }(_react2.default.Component);
-
-    ;
+    var Options = function Options(props) {
+        return _react2.default.createElement(
+            'div',
+            null,
+            props.options.map(function (option, i) {
+                return _react2.default.createElement(Option, { key: i, optionText: option });
+            }),
+            _react2.default.createElement(
+                'button',
+                { onClick: props.handleDeleteOptions },
+                'Remove All'
+            )
+        );
+    };
 
     // option
     var Option = function Option(props) {
@@ -348,20 +323,20 @@ document.addEventListener('DOMContentLoaded', function () {
         );
     };
 
-    var AddOption = function (_React$Component3) {
-        _inherits(AddOption, _React$Component3);
+    var AddOption = function (_React$Component2) {
+        _inherits(AddOption, _React$Component2);
 
         // since we are using 'this', we need to build the constructor
         function AddOption(props) {
             _classCallCheck(this, AddOption);
 
-            var _this3 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
+            var _this2 = _possibleConstructorReturn(this, (AddOption.__proto__ || Object.getPrototypeOf(AddOption)).call(this, props));
 
-            _this3.handleAddOption = _this3.handleAddOption.bind(_this3);
-            _this3.state = {
+            _this2.handleAddOption = _this2.handleAddOption.bind(_this2);
+            _this2.state = {
                 error: undefined
             };
-            return _this3;
+            return _this2;
         }
 
         _createClass(AddOption, [{
