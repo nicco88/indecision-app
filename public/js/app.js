@@ -210,10 +210,14 @@ document.addEventListener('DOMContentLoaded', function () {
             key: 'handleDeleteOptions',
             value: function handleDeleteOptions() {
                 this.setState(function () {
-                    return {
-                        options: []
-                    };
+                    return { options: [] };
                 });
+                // the same as this:
+                // this.setState(() => {
+                //     return {
+                //         options: []
+                //     }
+                // });
             }
         }, {
             key: 'handleAddOption',
@@ -225,9 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 this.setState(function (prevState) {
-                    return {
-                        options: prevState.options.concat(option)
-                    };
+                    return { options: prevState.options.concat(option) };
                 });
             }
         }, {
@@ -348,11 +350,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 var error = this.props.handleAddOption(option);
 
                 this.setState(function () {
-                    return {
-                        error: error
-                        //error: error
-                    };
+                    return { error: error };
                 });
+                // this.setState(() => {
+                //     return {
+                //         error
+                //         //error: error
+                //     }
+                // });
 
                 e.target.elements.option.value = '';
             }

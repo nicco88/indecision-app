@@ -30,11 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         handleDeleteOptions() {
-            this.setState(() => {
-                return {
-                    options: []
-                }
-            });
+            this.setState( () => ({ options: [] }) );
+            // the same as this:
+            // this.setState(() => {
+            //     return {
+            //         options: []
+            //     }
+            // });
         };
 
         handleAddOption(option) {
@@ -44,11 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return 'This option already exists'
             }
 
-            this.setState((prevState) => {
-                return {
-                    options: prevState.options.concat(option)
-                }
-            });
+            this.setState( (prevState) => ({options: prevState.options.concat(option)}) );
         }
         
         render () {
@@ -129,12 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = e.target.elements.option.value.trim();
             const error = this.props.handleAddOption(option);
             
-            this.setState(() => {
-                return {
-                    error
-                    //error: error
-                }
-            });
+            this.setState( () => ({error}) );
+            // this.setState(() => {
+            //     return {
+            //         error
+            //         //error: error
+            //     }
+            // });
 
             e.target.elements.option.value = '';
         }
