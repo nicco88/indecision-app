@@ -193,6 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
             _this.handleDeleteOptions = _this.handleDeleteOptions.bind(_this);
             _this.handlePick = _this.handlePick.bind(_this);
             _this.handleAddOption = _this.handleAddOption.bind(_this);
+            _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
             _this.state = {
                 options: []
             };
@@ -212,12 +213,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.setState(function () {
                     return { options: [] };
                 });
-                // the same as this:
-                // this.setState(() => {
-                //     return {
-                //         options: []
-                //     }
-                // });
+            }
+        }, {
+            key: 'handleDeleteOption',
+            value: function handleDeleteOption(optionToRemove) {
+                this.setState(function (prevState) {
+                    return {
+                        options: prevState.options.filter(function (option) {
+                            return optionToRemove !== option;
+                        })
+                    };
+                });
             }
         }, {
             key: 'handleAddOption',
@@ -247,7 +253,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     }),
                     _react2.default.createElement(Options, {
                         options: this.state.options,
-                        handleDeleteOptions: this.handleDeleteOptions
+                        handleDeleteOptions: this.handleDeleteOptions,
+                        handleDeleteOption: this.handleDeleteOption
                     }),
                     _react2.default.createElement(AddOption, {
                         handleAddOption: this.handleAddOption
@@ -306,7 +313,11 @@ document.addEventListener('DOMContentLoaded', function () {
             'div',
             null,
             props.options.map(function (option, i) {
-                return _react2.default.createElement(Option, { key: i, optionText: option });
+                return _react2.default.createElement(Option, {
+                    key: i,
+                    optionText: option,
+                    handleDeleteOption: props.handleDeleteOption
+                });
             }),
             _react2.default.createElement(
                 'button',
@@ -321,7 +332,16 @@ document.addEventListener('DOMContentLoaded', function () {
         return _react2.default.createElement(
             'div',
             null,
-            props.optionText
+            props.optionText,
+            _react2.default.createElement(
+                'button',
+                {
+                    onClick: function onClick(e) {
+                        props.handleDeleteOption(props.optionText);
+                    }
+                },
+                'Remove'
+            )
         );
     };
 
@@ -352,12 +372,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.setState(function () {
                     return { error: error };
                 });
-                // this.setState(() => {
-                //     return {
-                //         error
-                //         //error: error
-                //     }
-                // });
 
                 e.target.elements.option.value = '';
             }

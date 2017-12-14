@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
             this.handlePick = this.handlePick.bind(this);
             this.handleAddOption = this.handleAddOption.bind(this);
+            this.handleDeleteOption = this.handleDeleteOption.bind(this);
             this.state = {
                 options: []
             }
@@ -31,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         
         handleDeleteOptions() {
             this.setState( () => ({ options: [] }) );
-            // the same as this:
-            // this.setState(() => {
-            //     return {
-            //         options: []
-            //     }
-            // });
+        };
+
+        handleDeleteOption(optionToRemove) {
+            this.setState( (prevState) => ({
+                options: prevState.options.filter( (option) => optionToRemove !== option )
+            }) );
         };
 
         handleAddOption(option) {
@@ -62,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <Options 
                         options={this.state.options}
                         handleDeleteOptions={this.handleDeleteOptions}
+                        handleDeleteOption={this.handleDeleteOption}
                     />
                     <AddOption 
                         handleAddOption={this.handleAddOption}
@@ -98,7 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const Options = (props) => (
         <div>
             { 
-                props.options.map((option, i) => <Option key={i} optionText={ option } />)
+                props.options.map((option, i) => (
+                    <Option 
+                        key={i} 
+                        optionText={ option } 
+                        handleDeleteOption={props.handleDeleteOption}
+                        />
+                ))
             }
             <button onClick={props.handleDeleteOptions}>Remove All</button>
         </div>
@@ -108,6 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const Option = (props) => (
         <div>
             { props.optionText }
+            <button 
+                onClick={ (e) => {
+                    props.handleDeleteOption(props.optionText);
+                    }
+                }
+            >
+                Remove
+            </button>
         </div>
     );
 
@@ -128,12 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const error = this.props.handleAddOption(option);
             
             this.setState( () => ({error}) );
-            // this.setState(() => {
-            //     return {
-            //         error
-            //         //error: error
-            //     }
-            // });
 
             e.target.elements.option.value = '';
         }
@@ -152,8 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     
-
-
     ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
    
 
