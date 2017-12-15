@@ -201,6 +201,30 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         _createClass(IndecisionApp, [{
+            key: 'componentDidMount',
+            value: function componentDidMount() {
+                try {
+                    var json = localStorage.getItem('options');
+                    var options = JSON.parse(json);
+
+                    if (options) {
+                        this.setState(function () {
+                            return { options: options };
+                        });
+                    }
+                } catch (e) {
+                    // do nothing if error, that is if not a valid JSON
+                }
+            }
+        }, {
+            key: 'componentDidUpdate',
+            value: function componentDidUpdate(prevProps, prevState) {
+                if (prevState.options.length !== this.state.options.length) {
+                    var json = JSON.stringify(this.state.options);
+                    localStorage.setItem('options', json);
+                }
+            }
+        }, {
             key: 'handlePick',
             value: function handlePick() {
                 var randomIndex = Math.floor(Math.random() * this.state.options.length);
@@ -312,6 +336,11 @@ document.addEventListener('DOMContentLoaded', function () {
         return _react2.default.createElement(
             'div',
             null,
+            props.options.length === 0 && _react2.default.createElement(
+                'p',
+                null,
+                'Please, add an option to get started!'
+            ),
             props.options.map(function (option, i) {
                 return _react2.default.createElement(Option, {
                     key: i,
@@ -373,7 +402,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     return { error: error };
                 });
 
-                e.target.elements.option.value = '';
+                if (!error) {
+                    e.target.elements.option.value = '';
+                }
             }
         }, {
             key: 'render',

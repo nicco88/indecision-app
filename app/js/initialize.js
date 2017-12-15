@@ -24,6 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
+        componentDidMount() {
+            try {
+                const json = localStorage.getItem('options');
+                const options = JSON.parse(json);
+    
+                if(options) {
+                    this.setState(() => ({options}) );
+                }
+            } catch (e) {
+                // do nothing if error, that is if not a valid JSON
+            }
+            
+        };
+
+        componentDidUpdate(prevProps, prevState) {
+            if (prevState.options.length !== this.state.options.length) {
+                const json = JSON.stringify(this.state.options);
+                localStorage.setItem('options', json);
+            }
+        };
+
         handlePick() {
             const randomIndex = Math.floor(Math.random() * this.state.options.length);
             const option = this.state.options[randomIndex];
@@ -99,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const Options = (props) => (
         <div>
+            {props.options.length === 0 && <p>Please, add an option to get started!</p>}
             { 
                 props.options.map((option, i) => (
                     <Option 
@@ -145,7 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             this.setState( () => ({error}) );
 
-            e.target.elements.option.value = '';
+            if (!error) {
+                e.target.elements.option.value = '';
+            }
         }
 
         render() {
