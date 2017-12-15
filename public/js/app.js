@@ -341,6 +341,10 @@ var _Action = require('./Action');
 
 var _Action2 = _interopRequireDefault(_Action);
 
+var _OptionModal = require('./OptionModal');
+
+var _OptionModal2 = _interopRequireDefault(_OptionModal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -368,11 +372,17 @@ var IndecisionApp = function (_React$Component) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = IndecisionApp.__proto__ || Object.getPrototypeOf(IndecisionApp)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-            options: []
+            options: [],
+            selected: undefined
         }, _this.handlePick = function () {
             var randomIndex = Math.floor(Math.random() * _this.state.options.length);
             var option = _this.state.options[randomIndex];
-            alert(option);
+            // alert(option);
+            _this.setState(function () {
+                return {
+                    selectedOption: option
+                };
+            });
         }, _this.handleDeleteOptions = function () {
             _this.setState(function () {
                 return { options: [] };
@@ -395,25 +405,15 @@ var IndecisionApp = function (_React$Component) {
             _this.setState(function (prevState) {
                 return { options: prevState.options.concat(option) };
             });
+        }, _this.handleClearSelectedOption = function () {
+            _this.setState(function () {
+                return { selectedOption: undefined };
+            });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(IndecisionApp, [{
         key: 'componentDidMount',
-
-
-        // constructor(props) {
-        //     super(props);
-
-        //     this.handleDeleteOptions = this.handleDeleteOptions.bind(this);
-        //     this.handlePick = this.handlePick.bind(this);
-        //     this.handleAddOption = this.handleAddOption.bind(this);
-        //     this.handleDeleteOption = this.handleDeleteOption.bind(this);
-        //     // this.state = {
-        //     //     options: []
-        //     // }
-        // }
-
         value: function componentDidMount() {
             try {
                 var json = localStorage.getItem('options');
@@ -456,6 +456,10 @@ var IndecisionApp = function (_React$Component) {
                 }),
                 _react2.default.createElement(_AddOption2.default, {
                     handleAddOption: this.handleAddOption
+                }),
+                _react2.default.createElement(_OptionModal2.default, {
+                    selectedOption: this.state.selectedOption,
+                    handleClearSelectedOption: this.handleClearSelectedOption
                 })
             );
         }
@@ -499,6 +503,54 @@ var Option = function Option(props) {
 };
 
 exports.default = Option;
+});
+
+require.register("js/components/OptionModal.js", function(exports, require, module) {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactModal = require('react-modal');
+
+var _reactModal2 = _interopRequireDefault(_reactModal);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var OptionModal = function OptionModal(props) {
+    return _react2.default.createElement(
+        _reactModal2.default,
+        {
+            isOpen: !!props.selectedOption,
+            onRequestClose: props.handleClearSelectedOption,
+            contentLabel: 'Selected Option',
+            closeTimeoutMS: 200
+            // className="modal"
+        },
+        _react2.default.createElement(
+            'h3',
+            null,
+            'Selected Option'
+        ),
+        props.selectedOption && _react2.default.createElement(
+            'p',
+            null,
+            props.selectedOption
+        ),
+        _react2.default.createElement(
+            'button',
+            { onClick: props.handleClearSelectedOption },
+            'Okay'
+        )
+    );
+};
+
+exports.default = OptionModal;
 });
 
 require.register("js/components/Options.js", function(exports, require, module) {
