@@ -248,13 +248,13 @@ var AddOption = function (_React$Component) {
                 null,
                 this.state.error && _react2.default.createElement(
                     'p',
-                    null,
+                    { className: 'add-option-error' },
                     this.state.error
                 ),
                 _react2.default.createElement(
                     'form',
-                    { onSubmit: this.handleAddOption },
-                    _react2.default.createElement('input', { name: 'option', type: 'text' }),
+                    { className: 'add-option', onSubmit: this.handleAddOption },
+                    _react2.default.createElement('input', { className: 'add-option__input', name: 'option', type: 'text' }),
                     _react2.default.createElement(
                         'button',
                         { className: 'button' },
@@ -446,18 +446,26 @@ var IndecisionApp = function (_React$Component) {
                 'div',
                 null,
                 _react2.default.createElement(_Header2.default, { subtitle: subtitle }),
-                _react2.default.createElement(_Action2.default, {
-                    handlePick: this.handlePick,
-                    hasOptions: this.state.options.length > 0
-                }),
-                _react2.default.createElement(_Options2.default, {
-                    options: this.state.options,
-                    handleDeleteOptions: this.handleDeleteOptions,
-                    handleDeleteOption: this.handleDeleteOption
-                }),
-                _react2.default.createElement(_AddOption2.default, {
-                    handleAddOption: this.handleAddOption
-                }),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'container' },
+                    _react2.default.createElement(_Action2.default, {
+                        handlePick: this.handlePick,
+                        hasOptions: this.state.options.length > 0
+                    }),
+                    _react2.default.createElement(
+                        'div',
+                        { className: 'widget' },
+                        _react2.default.createElement(_Options2.default, {
+                            options: this.state.options,
+                            handleDeleteOptions: this.handleDeleteOptions,
+                            handleDeleteOption: this.handleDeleteOption
+                        }),
+                        _react2.default.createElement(_AddOption2.default, {
+                            handleAddOption: this.handleAddOption
+                        })
+                    )
+                ),
                 _react2.default.createElement(_OptionModal2.default, {
                     selectedOption: this.state.selectedOption,
                     handleClearSelectedOption: this.handleClearSelectedOption
@@ -489,8 +497,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var Option = function Option(props) {
     return _react2.default.createElement(
         "div",
-        null,
-        props.optionText,
+        { className: "option" },
+        _react2.default.createElement(
+            "p",
+            { className: "option__text" },
+            props.count,
+            ". ",
+            props.optionText
+        ),
         _react2.default.createElement(
             "button",
             {
@@ -531,17 +545,17 @@ var OptionModal = function OptionModal(props) {
             isOpen: !!props.selectedOption,
             onRequestClose: props.handleClearSelectedOption,
             contentLabel: 'Selected Option',
-            closeTimeoutMS: 200
-            // className="modal"
+            closeTimeoutMS: 200,
+            className: 'modal'
         },
         _react2.default.createElement(
             'h3',
-            null,
+            { className: 'modal__title' },
             'Selected Option'
         ),
         props.selectedOption && _react2.default.createElement(
             'p',
-            null,
+            { className: 'modal__body' },
             props.selectedOption
         ),
         _react2.default.createElement(
@@ -577,23 +591,33 @@ var Options = function Options(props) {
         'div',
         null,
         _react2.default.createElement(
-            'button',
-            {
-                onClick: props.handleDeleteOptions,
-                className: 'button button--link'
-            },
-            'Remove All'
+            'div',
+            { className: 'widget-header' },
+            _react2.default.createElement(
+                'h3',
+                { className: 'widget-header__title' },
+                'Your Options'
+            ),
+            _react2.default.createElement(
+                'button',
+                {
+                    onClick: props.handleDeleteOptions,
+                    className: 'button button--link'
+                },
+                'Remove All'
+            )
         ),
         props.options.length === 0 && _react2.default.createElement(
             'p',
-            null,
+            { className: 'widget__message' },
             'Please, add an option to get started!'
         ),
         props.options.map(function (option, i) {
             return _react2.default.createElement(_Option2.default, {
                 key: i,
                 optionText: option,
-                handleDeleteOption: props.handleDeleteOption
+                handleDeleteOption: props.handleDeleteOption,
+                count: i + 1
             });
         })
     );

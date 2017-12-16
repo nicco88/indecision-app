@@ -1,6 +1,10 @@
 @import 'normalize.css';
-@import 'base/_settings';
-@import 'base/_base';
-@import 'components/_header';
-@import 'components/_container';
-@import 'components/_button';
+@import 'base/_settings.postcss';
+@import 'base/_base.postcss';
+@import 'components/_header.postcss';
+@import 'components/_container.postcss';
+@import 'components/_button.postcss';
+@import 'components/_add-option.postcss';
+@import 'components/_option.postcss';
+@import 'components/_widget.postcss';
+@import 'components/_modal.postcss';
