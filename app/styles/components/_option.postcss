@@ -1,11 +1,20 @@
 .option {
-  border-bottom: 1px solid color($light-blue shade(10%));
+  background-color: color($pistacchio tint(60%));
+  border: 2px solid color($pistacchio shade(10%));
   display: flex;
   justify-content: space-between;
-  padding: $l-size $m-size;
+  padding: $m-size $m-size;
+  margin-top: 2rem;
+  border-top-left-radius: 250px 15px;
+  border-top-right-radius: 25px 80px;
+  border-bottom-left-radius: 20px 115px;
+  border-bottom-right-radius: 15px 105px;
+  & ~ .option {
+    margin-top: .8rem;
+  }  
 
   &__text {
-      color: #fff;
+      color: color($sand shade(40%));
       font-weight: 500;
       font-size: 2rem;
       margin: 0;

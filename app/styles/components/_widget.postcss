@@ -1,24 +1,35 @@
 /* Widget */
 .widget {
-	background-color: $light-blue;
 	margin-bottom: $xl-size;
+	border-top-left-radius: 15px 225px;
+    border-top-right-radius: 25px 150px;
+    border-bottom-left-radius: 25px 115px;
+    border-bottom-right-radius: 155px 25px;
 
 	&__message {
-		border-bottom: 1px solid color($light-blue shade(10%));
-		color: $off-white;
+		border-bottom: 1px solid color($sand shade(10%));
+		border-bottom-left-radius: 25px 115px;
+    	border-bottom-right-radius: 115px 15px;
+		color: color($sand shade(40%));
 		margin: 0;
 		padding: $l-size;
 		text-align: center;
+		font-size: 2rem;
 	}
 }
 
 /* Widget Header */
 .widget-header {
-	background-color: $blue;
-	color: $off-white;
+	background-color: color($yellow tint(40%));
+	color: color($sand shade(30%));
 	display: flex;
 	justify-content: space-between;
 	padding: $m-size;
+	border: .5rem solid color($sand);
+	border-top-left-radius: 15px 225px;
+    border-top-right-radius: 25px 150px;
+    border-bottom-left-radius: 25px 115px;
+    border-bottom-right-radius: 155px 25px;
 
 	&__title {
 		margin: 0;

@@ -1,7 +1,8 @@
 /* Add Option Error */
 .add-option-error {
-    color: $off-white;
+    color: color(brown shade(20%));
     font-style: italic;
+    font-size: 2rem;
     margin: $m-size 0 0 0;
     padding: 0 $m-size;
 }
@@ -11,19 +12,30 @@
     display: flex;
     flex-direction: column;
     padding: $m-size;
+    background-color: $sand;
+    margin-top: 2rem;
+    border: .2rem solid color($sand shade(10%));
+    border-top-left-radius: 28px 125px;
+    border-top-right-radius: 100px 30px;
+    border-bottom-right-radius: 20px 205px;
+    border-bottom-left-radius: 15px 225px;
 
     @media (width >= $desktop-breakpoint) {
         flex-direction: row;
     }
 
     &__input {
-        background-color: $dark-blue;
+        background-color: color($sand tint(60%));
         border: none;
-        color: $off-white;
-        border-bottom: .3rem solid color($dark-blue shade(10%));
+        color: color($sand shade(60%));
+        border: .3rem solid color($sand shade(10%));
         flex-grow: 1;
         margin: 0 0 $s-size 0;
         padding: $s-size;
+        border-top-left-radius: 15px 225px;
+        border-top-right-radius: 255px 15px;
+        border-bottom-left-radius: 225px 15px;
+        border-bottom-right-radius: 15px 255px;
 
         @media (width >= $desktop-breakpoint) {
             margin: 0 $s-size 0 0;

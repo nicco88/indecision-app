@@ -18,20 +18,26 @@
 }
 
 .modal {
-    background-color: $light-blue;
-    color: #fff;
+    background-color: color($sand tint(60%));
+    color: color($sand shade(60%));
     max-width: 30rem;
     outline: none;
     padding: $l-size;
     text-align: center;
+    border: .3rem solid color($sand shade(10%));
+    border-top-left-radius: 15px 225px;
+    border-top-right-radius: 255px 15px;
+    border-bottom-left-radius: 225px 15px;
+    border-bottom-right-radius: 15px 255px;
 
     &__title {
         margin: 0 0 $m-size 0;
+        font-size: 3rem;
     }
 
     &__body {
-        font-size: 2rem;
-        font-weight: 300;
+        font-size: 3rem;
+        font-weight: 400;
         margin: 0 0 $l-size 0;
         word-break: break-all;
     }

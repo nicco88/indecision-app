@@ -1,16 +1,19 @@
 /* Action button */
 
 .action-button {
-    background-color: gold;
-    border: none;
-    border-bottom: .6rem solid color(gold shade(20%));
-    color: #fff;
+    background-color: $pistacchio;
+    border: .3rem solid color($pistacchio shade(20%));
+    color: color($pistacchio shade(30%));
     font-weight: bold;
     font-size: $l-size;
     margin-bottom: $m-size;
     padding: 2.4rem;
     width: 100%;
-    border-radius: 50px;
+    border-top-left-radius: 15px 225px;
+    border-top-right-radius: 25px 150px;
+    border-bottom-left-radius: 25px 115px;
+    border-bottom-right-radius: 155px 25px;
+    
 
     &:disabled {
         opacity: .5;
@@ -23,17 +26,20 @@
 
 /* Button */
 .button {
-    background-color: gold;
-    border: none;
-    border-bottom: .3rem solid color(gold shade(10%));
-    color: white;
-    font-weight: 500;
+    background-color: $pistacchio;
+    border: .3rem solid color($pistacchio shade(20%));
+    border-top-left-radius: 125px 25px;
+    border-top-right-radius: 10px 205px;
+    border-bottom-right-radius: 20px 205px;
+    border-bottom-left-radius: 185px 25px;
+    color: color($pistacchio shade(40%));
+    font-weight: bold;
     padding: $s-size;
 
     &--link {
         background: none;
         border: none;
-        color: $off-white;
+        color: color($pistacchio shade(30%));
         padding: 0;
     }
 }

@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab:400,400i,700');
 
 html {
     font-size: 62.5%;
 }
 
 body {
-    background-color: $dark-blue;
-    font-family: Helvetica, Arial, sans-serif;
+    background-color: color($sand tint(90%));
+    font-family: 'Josefin Slab', Helvetica, Arial, sans-serif !important;
     font-size: $m-size;
 }
 
@@ -18,4 +19,8 @@ button {
     &:focus {
         outline: none;
     }
+}
+
+button, input, optgroup, select, textarea {
+    font-family: 'Josefin Slab', Helvetica, Arial, sans-serif !important;
 }
