@@ -503,4 +503,12 @@ button:disabled {
 }
   }
 
+.container {
+    max-width: 600px;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 0 16px;
+    padding: 0 1.6rem;
+}
+
 /*# sourceMappingURL=app.css.map*/

@@ -2,3 +2,4 @@
 @import 'base/_settings';
 @import 'base/_base';
 @import 'components/_header';
+@import 'components/_container';
