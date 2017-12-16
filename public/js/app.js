@@ -149,13 +149,13 @@ var __makeRelativeRequire = function(require, mappings, pref) {
   }
 };
 require.register("js/components/Action.js", function(exports, require, module) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -163,15 +163,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Action = function Action(props) {
     return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-            'button',
+            "button",
             {
                 onClick: props.handlePick,
-                disabled: !props.hasOptions
+                disabled: !props.hasOptions,
+                className: "action-button"
             },
-            'What should I do?'
+            "What should I do?"
         )
     );
 };
@@ -256,7 +257,7 @@ var AddOption = function (_React$Component) {
                     _react2.default.createElement('input', { name: 'option', type: 'text' }),
                     _react2.default.createElement(
                         'button',
-                        null,
+                        { className: 'button' },
                         'Add'
                     )
                 )
@@ -473,13 +474,13 @@ exports.default = IndecisionApp;
 });
 
 require.register("js/components/Option.js", function(exports, require, module) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -487,17 +488,18 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Option = function Option(props) {
     return _react2.default.createElement(
-        'div',
+        "div",
         null,
         props.optionText,
         _react2.default.createElement(
-            'button',
+            "button",
             {
+                className: "button button--link",
                 onClick: function onClick(e) {
                     props.handleDeleteOption(props.optionText);
                 }
             },
-            'Remove'
+            "Remove"
         )
     );
 };
@@ -544,7 +546,7 @@ var OptionModal = function OptionModal(props) {
         ),
         _react2.default.createElement(
             'button',
-            { onClick: props.handleClearSelectedOption },
+            { className: 'button', onClick: props.handleClearSelectedOption },
             'Okay'
         )
     );
@@ -574,6 +576,14 @@ var Options = function Options(props) {
     return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(
+            'button',
+            {
+                onClick: props.handleDeleteOptions,
+                className: 'button button--link'
+            },
+            'Remove All'
+        ),
         props.options.length === 0 && _react2.default.createElement(
             'p',
             null,
@@ -585,12 +595,7 @@ var Options = function Options(props) {
                 optionText: option,
                 handleDeleteOption: props.handleDeleteOption
             });
-        }),
-        _react2.default.createElement(
-            'button',
-            { onClick: props.handleDeleteOptions },
-            'Remove All'
-        )
+        })
     );
 };
 
