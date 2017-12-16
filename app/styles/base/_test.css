@@ -1,7 +1,0 @@
-:root {
-    --testColor: gold;
-}
-
-body {
-    background-color: var(--testColor);
-}

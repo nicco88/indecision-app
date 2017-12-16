@@ -20,7 +20,10 @@ exports.plugins = {
     postcss: {
         processors: [
             require('postcss-import')(),
-            require('postcss-cssnext')()
+            require('postcss-simple-vars')(),
+            require('postcss-nested')(),
+            require('postcss-cssnext')(),
+            require('postcss-hexrgba')(),
         ]
     }
 };

@@ -1,2 +1,4 @@
 @import 'normalize.css';
-@import 'base/_test';
+@import 'base/_settings';
+@import 'base/_base';
+@import 'components/_header';

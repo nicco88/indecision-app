@@ -272,13 +272,13 @@ exports.default = AddOption;
 });
 
 require.register("js/components/Header.js", function(exports, require, module) {
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -286,19 +286,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Header = function Header(props) {
     return _react2.default.createElement(
-        'div',
-        null,
+        "div",
+        { className: "header" },
         _react2.default.createElement(
-            'div',
-            null,
+            "div",
+            { className: "container" },
             _react2.default.createElement(
-                'h1',
-                null,
+                "h1",
+                { className: "header__title" },
                 props.title
             ),
             props.subtitle && _react2.default.createElement(
-                'h2',
-                null,
+                "h2",
+                { className: "header__subtitle" },
                 props.subtitle
             )
         )
